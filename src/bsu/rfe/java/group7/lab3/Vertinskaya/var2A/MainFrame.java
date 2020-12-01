@@ -198,7 +198,7 @@ public class MainFrame extends JFrame {
                     FileOutputStream(selectedFile));
             for (int i = 0; i<data.getRowCount(); i++) {
                 out.writeDouble((Double)data.getValueAt(i,0));
-                out.writeDouble((Double)data.getValueAt(i,0));
+                out.writeDouble((Double)data.getValueAt(i,1));
             }
             out.close();
         } catch (Exception e) {
