@@ -39,6 +39,7 @@ public class MainFrame extends JFrame {
     private JTextField textFieldTo;
     private JTextField textFieldStep;
     private Box hBoxResult;
+    private JMenuItem informationItem;
     private GornerTableCellRenderer renderer = new
             GornerTableCellRenderer();
     private GornerTableModel data;
@@ -55,6 +56,8 @@ public class MainFrame extends JFrame {
         menuBar.add(fileMenu);
         JMenu tableMenu = new JMenu("Таблица");
         menuBar.add(tableMenu);
+        JMenu spravkaMenu = new JMenu("Справка");
+        menuBar.add(spravkaMenu);
         Action saveToTextAction = new AbstractAction("Сохранить в текстовый файл") {
             public void actionPerformed(ActionEvent event) {
                 if (fileChooser==null) {
@@ -90,6 +93,24 @@ public class MainFrame extends JFrame {
                 getContentPane().repaint();
             }
         };
+        Action aboutProgramAction = new AbstractAction("О программе") {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Box information=Box.createVerticalBox();
+                JLabel author = new JLabel("Автор: Вертинская Анастасия");
+                JLabel group = new JLabel("студентка 7 группы");
+                information.add(Box.createVerticalGlue());
+                information.add(author);
+                information.add(Box.createVerticalStrut(10));
+                information.add(group);
+                information.add(Box.createVerticalGlue());
+                JOptionPane.showMessageDialog(MainFrame.this,
+                        information, "" +
+                                "О программе", JOptionPane.INFORMATION_MESSAGE);
+            }
+        };
+        informationItem=spravkaMenu.add(aboutProgramAction);
+        informationItem.setEnabled(true);
         searchValueMenuItem = tableMenu.add(searchValueAction);
         searchValueMenuItem.setEnabled(false);
         JLabel labelForFrom = new JLabel("X изменяется на интервале от:");
